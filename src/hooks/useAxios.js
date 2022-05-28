@@ -1,10 +1,10 @@
 import axios from "axios"
 
-export const useAxios = async(input) => {
-  const url = `https://api.giphy.com/v1/gifs/search?q=${encodeURI(input)}&limit=12&api_key=JApdZ2hq1K0gVHWbiIkhwu1MR6rqCfJ0`
-  const res = await axios.get(url)
-
-  const gifs = res.map(img => {
+export const useAxios = async (input) => {
+  const url = `https://api.giphy.com/v1/gifs/search?q=${encodeURI(input)}&limit=12&api_key=4FeGdflzRsCjDKZW4wKKThWZ74wkKx5r`
+  const { data } = await axios.get(url)
+  console.log(data.data)
+  const gifs = data.data.map(img => {
     return {
       id: img.id,
       title: img.title,
