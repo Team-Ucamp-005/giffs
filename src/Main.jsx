@@ -5,10 +5,10 @@ const Main = ({ category }) => {
   const [valueInput, setValueInput] = useState('')
 
   const handleClick = (ev) => {
-    ev.preventDefault()
     category(valueInput)
     console.log('el evento o algo', ev)
   }
+
   return (
     <>
       <div>

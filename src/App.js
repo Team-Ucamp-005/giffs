@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { useAxios } from './hooks/useAxios';
-import Main from './Main';
+import { Routes, Route, Link } from "react-router-dom";
+import CharactersList from './components/CharactersList/CharactersList';
+import Alive from './components/Alive/Alive';
+
+
+
 const App = ({ defaultValue = [] }) => {
-
-
-  const [categories, setCategories] = useState(defaultValue)
-  const [valueInput, setValueInput] = useState('')
-
-  const data = useAxios(valueInput)
-  const getCategories = () => {
-    console.log(data)
-    data.then(setCategories)
-  }
-  useEffect(() => {
-    getCategories()
-  }, [])
 
   return (
     <div>
-      <Main category={setValueInput} />
-      <span>{valueInput}</span>
-      <div>
-        {
-          categories.map((item) => (<img src={item.url} />))
-        }
-      </div>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/alive">Alive</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<CharactersList />} />
+        <Route path="alive" element={<Alive />} />
+      </Routes>
     </div>
   )
 }
